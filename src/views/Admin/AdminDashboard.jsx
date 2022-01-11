@@ -26,6 +26,8 @@ import Groupcall from './Groupcall';
 import JoinRoom from './pages/join';
 import Video from './pages/meeting';
 import Chatroom from './Chatroom';
+import AddTask from '../Instructor/AddTask';
+import ViewAllTickets from '../ViewAllTickets';
 // import DashboardHome from '../views/DashboardHome'
 // import AddTask from '../views/Instructor/AddTask';
 // import UpdateGroup from '../views/Instructor/UpdateGroup';
@@ -49,7 +51,7 @@ const AdminDashboard = () => {
                 <Sider trigger={null} collapsible collapsed={collapsed}>
                     <div className="logo" />
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
-                        <Menu.Item key="/admin-dashboard" icon={<UserOutlined />}>
+                    <Menu.Item key="/admin-dashboard" icon={<UserOutlined />}>
                             <NavLink to="">
                                 Home
                             </NavLink>
@@ -64,11 +66,11 @@ const AdminDashboard = () => {
                                 Assign Jury
                             </NavLink>
                         </Menu.Item>
-                        <Menu.Item key="/admin-dashboard/distribute-marks" icon={<UsergroupAddOutlined />}>
+                        {/* <Menu.Item key="/admin-dashboard/distribute-marks" icon={<UsergroupAddOutlined />}>
                             <NavLink to="distribute-marks">
                                 Distribute Marks
                             </NavLink>
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item key="/admin-dashboard/add-student" icon={<AppstoreAddOutlined />}>
                             <NavLink to="add-student">
                                 Add Student
@@ -82,6 +84,16 @@ const AdminDashboard = () => {
                         <Menu.Item key="/admin-dashboard/add-jury" icon={<AppstoreAddOutlined />}>
                             <NavLink to="add-jury">
                                 Add Jury
+                            </NavLink>
+                        </Menu.Item>
+                        <Menu.Item key="/admin-dashboard/add-tasks" icon={<AppstoreAddOutlined />}>
+                            <NavLink to="add-tasks">
+                                Add Task
+                            </NavLink>
+                        </Menu.Item>
+                        <Menu.Item key="/admin-dashboard/view-tickets" icon={<AppstoreAddOutlined />}>
+                            <NavLink to="view-tickets">
+                                View Tickets
                             </NavLink>
                         </Menu.Item>
                         <Menu.Item key="/admin-dashboard/video-call" icon={<AppstoreAddOutlined />}>
@@ -137,11 +149,13 @@ const AdminDashboard = () => {
                         }}
                     >
                         <Routes>
-                            <Route path="/" element={<AdminDashboardHome />} />
+                        <Route path="/" element={<AdminDashboardHome />} />
                             <Route path="view-groups" element={<ViewGroups />} />
                             <Route path="add-student" element={<AddStudent />} />
                             <Route path="add-instructor" element={<AddInstructor />} />
+                            <Route path="add-tasks" element={<AddTask />} />
                             <Route path="add-jury" element={<AddJury />} />
+                            <Route path="view-tickets" element={<ViewAllTickets />} />
                             <Route path="distribute-marks" element={<DistributeMarks />} />
                             <Route exact path="assign" element={<AssignJury />} />
                             <Route exact path="assign-jury/:groupId" element={<AssignJuryByGroup />} />

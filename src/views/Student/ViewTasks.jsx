@@ -9,15 +9,26 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
 const ViewTasks = () => {
     const [tasks, setTasks] = useState([]);
+    const [groupMarks, setGroupMarks] = useState()
 
     useEffect(() => {
         getTasks();
     }, []);
 
+    useEffect(() => {
+        return axios.get(URI + 'get-group-marks', {
+            params: {
+                id: JSON.parse(localStorage.getItem('student')).id
+            }
+        }).then(response => {
+            setGroupMarks(response.data.response.detail)
+        })
+    }, [])
+
     function getTasks() {
         return axios.get(URI + 'getStudentTasks', {
             params: {
-                student_id: JSON.parse(localStorage.getItem('student')).roll_no
+                student_id: JSON.parse(localStorage.getItem('student')).id
             }
         }).then(response => {
             setTasks(response.data.response.detail)
@@ -54,12 +65,16 @@ const ViewTasks = () => {
                                                 task.status == 'pending' ?
                                                     <td style={{ color: 'red', fontWeight: '500' }}>{task.status}</td>
                                                     :
-                                                    ''
+                                                    <td>{task.status}</td>
                                             }
                                             <td>
-                                                <Link to={`/student-dashboard/submit-task/${task.id}`}>
-                                                    Submit
-                                                </Link>
+                                                {
+                                                    task.status == 'pending' ?
+                                                        <Link to={`/student-dashboard/submit-task/${task.id}`}>
+                                                            Submit
+                                                        </Link> :
+                                                        '-'
+                                                }
                                             </td>
                                         </tr>
                                     )

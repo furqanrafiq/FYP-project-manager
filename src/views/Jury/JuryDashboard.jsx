@@ -86,7 +86,7 @@ const JuryDashboard = () => {
                         </Menu.Item>
                         <Menu.Item key="/jury-dashboard/chat-room" icon={<UsergroupAddOutlined />}>
                             <NavLink to="chat-room">
-                                Chatroom.
+                                Chatroom
                             </NavLink>
                         </Menu.Item>
                     </Menu>

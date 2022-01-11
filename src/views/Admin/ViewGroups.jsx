@@ -69,6 +69,7 @@ const ViewGroups = () => {
                                 <tbody>
                                     {
                                         groups.map((group, index) => {
+                                            console.log(group)
                                             return (
                                                 <tr>
                                                     <th scope="row">{index + 1}</th>
@@ -79,7 +80,7 @@ const ViewGroups = () => {
                                                             group.groupDetails.map(gr => {
                                                                 return (
                                                                     <p>
-                                                                        {gr.student_id}
+                                                                        {gr.name} - {gr.roll_no}                                                                        
                                                                     </p>
                                                                 )
                                                             })

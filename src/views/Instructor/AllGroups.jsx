@@ -43,7 +43,7 @@ const AllGroups = () => {
                                             group.groupDetails.map(gr => {
                                                 return (
                                                     <p>
-                                                        {gr.student_id}
+                                                        {gr.name} - {gr.roll_no}   
                                                     </p>
                                                 )
                                             })

@@ -21,6 +21,8 @@ import JoinRoom from './pages/join';
 import Video from './pages/meeting';
 import Chatroom from './Chatroom';
 import Room from './Room';
+import ViewMarks from './ViewMarks'
+import AddTicket from '../AddTicket';
 // import DashboardHome from '../views/DashboardHome'
 // import AddTask from '../views/Instructor/AddTask';
 // import UpdateGroup from '../views/Instructor/UpdateGroup';
@@ -52,6 +54,19 @@ const StudentDashboard = () => {
                         <Menu.Item key="/student-dashboard/view-tasks" icon={<UsergroupAddOutlined />}>
                             <NavLink to="view-tasks">
                                 View Tasks
+                            </NavLink>
+                        </Menu.Item>
+                        <Menu.Item key="/student-dashboard/view-marks" icon={<UsergroupAddOutlined />}>
+                            <NavLink to="view-marks">
+                                View Marks
+                            </NavLink>
+                        </Menu.Item>
+                        {/* <Menu.Item key="/student-dashboard/diagram-tool" icon={<UsergroupAddOutlined />}> */}
+
+                        {/* </Menu.Item> */}
+                        <Menu.Item key="/student-dashboard/add-ticket" icon={<UsergroupAddOutlined />}>
+                            <NavLink to="add-ticket">
+                                Create A Ticket
                             </NavLink>
                         </Menu.Item>
                         <Menu.Item key="/student-dashboard/video-call" icon={<UsergroupAddOutlined />}>
@@ -109,12 +124,14 @@ const StudentDashboard = () => {
                         <Routes>
                             <Route path="/" element={<StudentDashboardHome />} />
                             <Route path="view-tasks" element={<ViewTasks />} />
+                            <Route path="view-marks" element={<ViewMarks />} />
                             <Route path="submit-task/:taskId" element={<SubmitTask />} />
+                            <Route path="add-ticket" element={<AddTicket />} />
                             <Route path="video-call" element={<Videocomp />} />
                             <Route path="create-room" element={<CreateRoom />} />
                             <Route path="join" element={<JoinRoom />} />
                             <Route path="video/:id" element={<Video />} />
-                            <Route path="chat-room" element={<Chatroom />}  />
+                            <Route path="chat-room" element={<Chatroom />} />
                             {/* 
                             <Route path="room/1" element={<Room />} /> */}
                             {/* <Route path="/" exact component={CreateRoom} /> */}

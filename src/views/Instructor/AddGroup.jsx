@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Input, Button, Checkbox, Select } from 'antd';
 import { URI } from '../../Helper';
-    import '../../assets/css/Instructor.scss'
-    import Swal from 'sweetalert2'
+import '../../assets/css/Instructor.scss'
+import Swal from 'sweetalert2'
 import axios from 'axios';
 
 const Option = Select;
 
 const AddGroup = () => {
     const [group, setGroup] = useState({});
-    const [students,setStudents] = useState([]);
-    const [groupStudents,setGroupStudents] = useState([]);
+    const [students, setStudents] = useState([]);
+    const [groupStudents, setGroupStudents] = useState([]);
 
     const instructor_id = JSON.parse(localStorage.getItem('instructor')).id;
 
-    function handleGroupStudents(e){
+    function handleGroupStudents(e) {
         setGroupStudents(groupStudents => [...groupStudents, e])
     }
 
@@ -64,7 +64,7 @@ const AddGroup = () => {
     }
 
     function handleStudents(e) {
-        setGroup({...group,['student_id']:e})
+        setGroup({ ...group, ['student_id']: e })
     }
 
     return (
@@ -88,12 +88,12 @@ const AddGroup = () => {
                     <Input onChange={(e) => handleUser('project_name', e.target.value)} value={group.jury_name} />
                 </Form.Item>
 
-                <Form.Item
+                {/* <Form.Item
                     label="Jury Name"
                     name="jury_name"
                 >
                     <Input onChange={(e) => handleUser('jury_name', e.target.value)} value={group.jury_name} />
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item
                     label="Student Roll No"
@@ -109,8 +109,9 @@ const AddGroup = () => {
                         {
                             students.length > 0 &&
                             students.map((student) => {
+                                console.log(student)
                                 return (
-                                    <Option value={student.roll_no} key={student.id}>
+                                    <Option value={student.id} key={student.id}>
                                         {student.roll_no}
                                     </Option>
                                 );

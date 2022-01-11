@@ -26,6 +26,9 @@ import Groupcall from '../views/Instructor/Groupcall';
 import JoinRoom from '../views/Instructor/pages/join';
 import Video from '../views/Instructor/pages/meeting';
 import Chatroom from '../views/Instructor/Chatroom';
+import MidMarks from '../views/Instructor/MidMarks'
+import FinalMarks from '../views/Instructor/FinalMarks'
+import AddTicket from '../views/AddTicket';
 
 
 const { Header, Sider, Content } = Layout;
@@ -45,7 +48,7 @@ const Dashboard = () => {
                 <Sider trigger={null} collapsible collapsed={collapsed}>
                     <div className="logo" />
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
-                        <Menu.Item key="/dashboard" icon={<UserOutlined />}>
+                    <Menu.Item key="/dashboard" icon={<UserOutlined />}>
                             <NavLink to="">
                                 Home
                             </NavLink>
@@ -60,11 +63,11 @@ const Dashboard = () => {
                                 Your Groups
                             </NavLink>
                         </Menu.Item>
-                        <Menu.Item key="/dashboard/add-tasks" icon={<AppstoreAddOutlined />}>
+                        {/* <Menu.Item key="/dashboard/add-tasks" icon={<AppstoreAddOutlined />}>
                             <NavLink to="add-tasks">
                                 Add Task
                             </NavLink>
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item key="/dashboard/add-tasks-marks" icon={<AppstoreAddOutlined />}>
                             <NavLink to="add-tasks-marks">
                                 Add Task Marks
@@ -75,6 +78,23 @@ const Dashboard = () => {
                                 Add Task Remarks
                             </NavLink>
                         </Menu.Item>
+
+                        <Menu.Item key="/dashboard/mid-evaluation-marks" icon={<AppstoreAddOutlined />}>
+                            <NavLink to="mid-evaluation-marks">
+                                Mid Evaluation Marks
+                            </NavLink>
+                        </Menu.Item>
+
+                        <Menu.Item key="/dashboard/final-evaluation-marks" icon={<AppstoreAddOutlined />}>
+                            <NavLink to="final-evaluation-marks">
+                                Final Evaluation Marks
+                            </NavLink>
+                        </Menu.Item>    
+                        <Menu.Item key="/dashboard/add-ticket" icon={<UsergroupAddOutlined />}>
+                            <NavLink to="add-ticket">
+                                Create A Ticket
+                            </NavLink>
+                        </Menu.Item>
                         <Menu.Item key="/dashboard/video-call" icon={<AppstoreAddOutlined />}>
                             <NavLink to="video-call">
                                 One-to-One video call
@@ -82,7 +102,7 @@ const Dashboard = () => {
                         </Menu.Item>
                         <Menu.Item key="/dashboard/group-call" icon={<AppstoreAddOutlined />}>
                             <NavLink to="group-call">
-                               Group call
+                                Group call
                             </NavLink>
                         </Menu.Item>
                         <Menu.Item key="/-dashboard/chat-room" icon={<AppstoreAddOutlined />}>
@@ -112,14 +132,16 @@ const Dashboard = () => {
                             <Route path="add-group" element={<AddGroup />} />
                             <Route path="update-group" element={<UpdateGroup />} />
                             <Route path="all-groups" element={<AllGroups />} />
-                            <Route path="add-tasks" element={<AddTask />} />
                             <Route path="add-tasks-marks" element={<AddTaskMarks />} />
                             <Route path="add-tasks-remarks" element={<AddTaskRemarks />} />
+                            <Route path="mid-evaluation-marks" element={<MidMarks />} />
+                            <Route path="final-evaluation-marks" element={<FinalMarks />} />
+                            <Route path="add-ticket" element={<AddTicket />} />
                             <Route path="video-call" element={<Videocomp />} />
                             <Route path="group-call" element={<Groupcall />} />
                             <Route path="join" element={<JoinRoom />} />
                             <Route path="video/:id" element={<Video />} />
-                            <Route path="chat-room" element={<Chatroom />}  />
+                            <Route path="chat-room" element={<Chatroom />} />
                         </Routes>
                     </Content>
                 </Layout>

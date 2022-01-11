@@ -140,12 +140,11 @@ const AddTaskRemarks = () => {
                     </Select>
                 </Form.Item>
 
-                <Form.Item
+                {/* <Form.Item
                     label="Student Name"
                 >
                     <Input placeholder="Student Name" value={studentId} disabled />
-                </Form.Item>
-
+                </Form.Item> */}
                 <Form.Item
                     label="Remarks"
                     name="remarks"

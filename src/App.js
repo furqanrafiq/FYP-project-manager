@@ -43,6 +43,9 @@ import Room from './views/Student/Room';
 import CreateRoom from './views/Student/Groupcall';
 import AddTicket from './views/AddTicket'
 import ViewAllTickets from './views/ViewAllTickets'
+import ViewMarks from './views/Student/ViewMarks';
+import MidMarks from './views/Instructor/MidMarks';
+import FinalMarks from './views/Instructor/FinalMarks';
 
 function App() {
   const [instructorAuthenticated, setIsInstructorAuthenticated] = useState();
@@ -87,14 +90,16 @@ function App() {
         {
           instructorAuthenticated &&
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="dashboard" element={<DashboardHome />} />
-            <Route path="add-group" element={<AddGroup />} />
-            <Route path="update-group" element={<UpdateGroup />} />
-            <Route path="all-groups" element={<AllGroups />} />
-            <Route path="add-tasks" element={<AddTask />} />
-            <Route path="add-tasks-marks" element={<AddTaskMarks />} />
-            <Route path="add-tasks-remarks" element={<AddTaskRemarks />} />
-            <Route path="add-student" element={<AddStudent />} />
+           <Route exact path="dashboard" element={<DashboardHome />} />
+            <Route exact path="add-group" element={<AddGroup />} />
+            <Route exact path="update-group" element={<UpdateGroup />} />
+            <Route exact path="all-groups" element={<AllGroups />} />
+            <Route exact path="add-tasks-marks" element={<AddTaskMarks />} />
+            <Route exact path="add-tasks-remarks" element={<AddTaskRemarks />} />
+            <Route exact path="add-student" element={<AddStudent />} />
+            <Route exact path="mid-evaluation-marks" element={<MidMarks />} />
+            <Route exact path="final-evaluation-marks" element={<FinalMarks />} />
+            <Route exact path="add-ticket" element={<AddTicket />} />
             <Route path="video-call" element={<Videocomp />} />
             <Route path="group-call" element={<Groupcall />} />
             <Route path="join" element={<JoinRoom />} />
@@ -105,12 +110,13 @@ function App() {
         {
           isStudentLoggedIn &&
           <Route path="/student-dashboard" element={<StudentDashboard />}>
-            <Route path="student-dashboard" element={<DashboardHome />} />
-            <Route path="view-tasks" element={<ViewTasks />} />
-            <Route path="submit-task/:taskId" element={<SubmitTask />} />
-            <Route path="update-group" element={<UpdateGroup />} />
-            <Route path="all-groups" element={<AllGroups />} />
-            <Route path="add-tasks" element={<AddTask />} />
+            <Route exact path="student-dashboard" element={<StudentDashboardHome />} />
+            <Route exact path="view-tasks" element={<ViewTasks />} />
+            <Route exact path="view-marks" element={<ViewMarks />} />
+            <Route exact path="submit-task/:taskId" element={<SubmitTask />} />
+            <Route exact path="update-group" element={<UpdateGroup />} />
+            <Route exact path="all-groups" element={<AllGroups />} />
+            <Route exact path="add-ticket" element={<AddTicket />} />
             <Route path="video-call" element={<Videocomp />} />
             <Route path="create-room" element={<CreateRoom />} />
             <Route path="join" element={<JoinRoom />} />
@@ -123,12 +129,14 @@ function App() {
         {
           isAdminLoggedIn &&
           <Route path="/admin-dashboard" element={<AdminDashboard />}>
-            <Route path="admin-dashboard" element={<AdminDashboardHome />} />
-            <Route path="view-groups" element={<ViewGroups />} />
-            <Route path="add-student" element={<AddStudent />} />
-            <Route path="add-instructor" element={<AddInstructor />} />
-            <Route path="add-jury" element={<AddJury />} />
-            <Route path="distribute-marks" element={<DistributeMarks />} />
+            <Route exact path="admin-dashboard" element={<AdminDashboardHome />} />
+            <Route exact path="view-groups" element={<ViewGroups />} />
+            <Route exact path="add-student" element={<AddStudent />} />
+            <Route exact path="add-instructor" element={<AddInstructor />} />
+            <Route exact path="add-tasks" element={<AddTask />} />
+            <Route exact path="add-jury" element={<AddJury />} />
+            <Route exact path="view-tickets" element={<ViewAllTickets />} />
+            <Route exact path="distribute-marks" element={<DistributeMarks />} />
             <Route exact path="assign" element={<AssignJury />} />
             <Route exact path="assign-jury/:groupId" element={<AssignJuryByGroup />} />
             <Route path="video-call" element={<Videocomp />} />
@@ -136,7 +144,6 @@ function App() {
             <Route path="join" element={<JoinRoom />} />
             <Route path="video/:id" element={<Video />} />
             <Route path="chat-room" element={<Chatroom />} />
-            <Route exact path="view-tickets" element={<ViewAllTickets />} />
           </Route>
         }
         {

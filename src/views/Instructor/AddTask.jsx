@@ -12,7 +12,8 @@ const AddTask = () => {
     const [task, setTask] = useState({});
     const [groups, setGroups] = useState([])
     const [students, setStudents] = useState([]);
-    const instructor_id = JSON.parse(localStorage.getItem('instructor')).id;
+    const [semesters, setSemesters] = useState([]);
+    // const instructor_id = JSON.parse(localStorage.getItem('instructor')).id;
 
     const onFinish = (values) => {
         const requestOptions = {
@@ -23,7 +24,7 @@ const AddTask = () => {
                 group_id: values.group_id,
                 student_id: values.student_id,
                 deadline_date: values.deadline_date._d,
-                total_marks:values.total_marks
+                total_marks: values.total_marks
             })
         };
         fetch(URI + 'createTask', requestOptions)
@@ -31,7 +32,7 @@ const AddTask = () => {
                 if (response.status == 200) {
                     Swal.fire({
                         title: 'Success',
-                        text: 'Group Created Successfully',
+                        text: 'Task Created Successfully',
                         icon: 'success'
                     })
                 } else {
@@ -56,17 +57,17 @@ const AddTask = () => {
         setTask({ ...task, ['deadline_date']: dateString })
     }
 
-    function getStudents(groupId) {
-        axios.get(URI + `getGroupStudents?group_id=${groupId}`)
-            .then(resp => {
-                setStudents(resp.data.response.detail);
-            });
-    }
+    // function getStudents(groupId) {
+    //     axios.get(URI + `getGroupStudents?group_id=${groupId}`)
+    //         .then(resp => {
+    //             setStudents(resp.data.response.detail);
+    //         });
+    // }
 
     useEffect(() => {
-        axios.get(URI + `getGroups?instructor_id=${instructor_id}`)
+        axios.get(URI + `get-all-semesters`)
             .then(resp => {
-                setGroups(resp.data.response.detail);
+                setSemesters(resp.data.response.detail);
             });
     }, [])
 
@@ -83,10 +84,10 @@ const AddTask = () => {
                 autoComplete="off"
             >
 
-                <Form.Item
-                    label="Project Name"
+                {/* <Form.Item
+                    label="Group Name"
                     name="group_id"
-                    rules={[{ required: true, message: 'Please select Project Name!' }]}
+                    rules={[{ required: true, message: 'Please select Group Name!' }]}
                 >
                     <Select
                         className='w-100'
@@ -104,9 +105,9 @@ const AddTask = () => {
                                 );
                             })}
                     </Select>
-                </Form.Item>
+                </Form.Item> */}
 
-                <Form.Item
+                {/* <Form.Item
                     label="Select Student"
                     name="student_id"
                     rules={[{ required: true, message: "Please select a student!" }]}
@@ -127,7 +128,7 @@ const AddTask = () => {
                                 );
                             })}
                     </Select>
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item
                     label="Task Name"
