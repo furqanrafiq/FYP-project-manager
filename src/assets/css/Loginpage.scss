@@ -1,0 +1,21 @@
+.login-page{
+    .login-left{
+        background-image: url('../loginpage.jpg');
+        height: 100vh;
+        width: 100%;
+        background-repeat: no-repeat;
+        filter: blur(3px); 
+        -webkit-filter: blur(3px);
+    }
+    .login-text h2{
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+    }
+}
